@@ -1,0 +1,110 @@
+{
+  "version": "zen-synthetic-v1",
+  "seed": 2026,
+  "dataset_fingerprint": "80c61fdcee73",
+  "algorithm": "StandardScaler + LogisticRegression",
+  "nlp_algorithm": "Word + character TF-IDF / LogisticRegression (3 classes)",
+  "data_source": "Synthetic telemetry and hand-authored English chat templates",
+  "train_windows": 2700,
+  "test_windows": 900,
+  "train_players": 450,
+  "test_players": 150,
+  "split": "Held-out player identities; held-out chat template families",
+  "roc_auc": 0.8627,
+  "f1": 0.7205,
+  "brier_score": 0.1472,
+  "confusion_matrix": [
+    [
+      456,
+      82
+    ],
+    [
+      112,
+      250
+    ]
+  ],
+  "nlp": {
+    "train_messages": 540,
+    "test_messages": 180,
+    "train_templates": 108,
+    "test_templates": 36,
+    "accuracy": 0.9778,
+    "macro_f1": 0.9778,
+    "classes": [
+      "frustrated",
+      "neutral",
+      "toxic"
+    ],
+    "confusion_matrix": [
+      [
+        60,
+        0,
+        0
+      ],
+      [
+        0,
+        56,
+        4
+      ],
+      [
+        0,
+        0,
+        60
+      ]
+    ]
+  },
+  "features": [
+    {
+      "name": "click_rate_ratio",
+      "label": "Click-rate shift",
+      "importance": 0.1724
+    },
+    {
+      "name": "click_irregularity",
+      "label": "Irregular click intervals",
+      "importance": 0.1664
+    },
+    {
+      "name": "mistake_rate",
+      "label": "Repeated mistakes",
+      "importance": 0.1485
+    },
+    {
+      "name": "loss_streak",
+      "label": "Consecutive losses",
+      "importance": 0.0289
+    },
+    {
+      "name": "performance_drop",
+      "label": "Performance decline",
+      "importance": 0.1408
+    },
+    {
+      "name": "chat_risk",
+      "label": "Chat risk",
+      "importance": 0.1893
+    },
+    {
+      "name": "risk_trend",
+      "label": "Behavioral escalation",
+      "importance": 0.1248
+    },
+    {
+      "name": "session_minutes",
+      "label": "Session duration",
+      "importance": 0.0289
+    }
+  ],
+  "thresholds": {
+    "low_below": 35,
+    "high_at": 65
+  },
+  "limitations": [
+    "Synthetic labels encode generator assumptions; these scores are not real-world accuracy.",
+    "Risk is a behavioral estimate, not an observation of a player's emotions.",
+    "English-only toy NLP; sarcasm, quoted insults, dialect and unseen phrasing may be misclassified.",
+    "Trust is simulated historical behavior, not a measurement of personality.",
+    "No demonstrated reduction in toxicity, churn or unfair outcomes.",
+    "An opt-in production study and independent validation are required before deployment."
+  ]
+}

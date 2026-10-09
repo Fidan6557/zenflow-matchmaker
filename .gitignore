@@ -1,0 +1,13 @@
+node_modules/
+.venv/
+dist/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.log
+test-results/
+playwright-report/
+.env
+.zen-flow/
+*.tsbuildinfo
+backend/artifacts/*.joblib

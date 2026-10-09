@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: zen-flow-matchmaker
+    runtime: docker
+    plan: free
+    numInstances: 1
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    envVars:
+      - key: PORT
+        value: "10000"
